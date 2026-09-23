@@ -1,0 +1,10 @@
+.checkout,
+.account-form {
+  border-radius: 26px;
+}
+
+.dev-code {
+  padding: 10px;
+  border-radius: 10px;
+  background: #f3eadf;
+}
