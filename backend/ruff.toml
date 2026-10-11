@@ -1,0 +1,7 @@
+target-version = "py312"
+
+[lint]
+select = ["E", "F", "I", "UP", "B"]
+# The project deliberately keeps models, schemas and routes as compact single-line
+# definitions, so line length and statement-per-line rules are off.
+ignore = ["E501", "E701", "E702", "B008"]
