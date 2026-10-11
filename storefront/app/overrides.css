@@ -3,6 +3,172 @@
   border-radius: 26px;
 }
 
+.product-photo {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Until a photo is uploaded the card keeps its shape with a soft placeholder. */
+.product-photo.empty, .image-wrap.empty {
+  background: linear-gradient(140deg, #f4ece2 0%, #e8dace 55%, #dcc8b6 100%);
+}
+
+.product-photo img {
+  object-fit: cover;
+}
+
+.account-button.chip {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border-bottom: 0;
+  max-width: 190px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+}
+
+.avatar.fallback {
+  display: grid;
+  place-items: center;
+  background: var(--coral);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.avatar.large {
+  width: 76px;
+  height: 76px;
+  font-size: 30px;
+}
+
+.avatar-picker {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  margin: 4px 0 8px;
+}
+
+.account-form .field {
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #82796f;
+}
+
+.account-form .stack-form {
+  display: grid;
+  gap: 11px;
+  margin-top: 4px;
+}
+
+.account-form details summary {
+  cursor: pointer;
+}
+
+.account-form .muted {
+  color: #82796f;
+}
+
+.account-form .ok {
+  color: #277253;
+}
+
+.account-page {
+  max-width: 660px;
+  padding: 60px 0 120px;
+}
+
+.account-page h1 {
+  font: clamp(34px, 4.5vw, 48px) Georgia, serif;
+  margin: 8px 0 26px;
+}
+
+.orders {
+  display: grid;
+  gap: 14px;
+}
+
+.order-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+
+.order-card header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  position: static;
+}
+
+.order-card .muted {
+  color: #82796f;
+  font-size: 13px;
+  margin: 4px 0 12px;
+}
+
+.order-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 6px;
+  color: #4d4740;
+}
+
+.badge {
+  font-size: 12px;
+  letter-spacing: .04em;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: #ece5dc;
+  color: #5d554d;
+}
+
+.badge.paid, .badge.delivered { background: #d9ede2; color: #1f5c41; }
+.badge.cancelled { background: #f3ded8; color: #8d3722; }
+.badge.shipped, .badge.packed { background: #e2e7f1; color: #37476b; }
+
+.checkout-result {
+  max-width: 620px;
+  padding: 92px 0 130px;
+}
+
+.checkout-result h1 {
+  font: clamp(38px, 5vw, 56px) Georgia, serif;
+  margin: 10px 0 18px;
+}
+
+.checkout-result > p:not(.eyebrow) {
+  color: #625c55;
+  font-size: 18px;
+  line-height: 1.55;
+  margin: 0 0 26px;
+}
+
+.checkout-result .order-ref {
+  font-weight: 700;
+  color: var(--ink);
+}
+
 .dev-code {
   padding: 10px;
   border-radius: 10px;
