@@ -252,12 +252,3 @@ storefront/
     i18n.ts         Ukrainian and English copy
 docs/screenshots/   the images in this README
 ```
-
----
-
-## What I would build next
-
-- Refunds through the Stripe API, with payment details surfaced in the CRM
-- Product images in S3-compatible storage instead of a Docker volume
-- Email and notifications moved to a queue
-- Customer-facing order tracking page with delivery service integration
