@@ -4,8 +4,9 @@ Revision ID: 002_customer_accounts_and_sizes
 Revises: 001_initial
 Create Date: 2026-09-21
 """
-from alembic import op
 import sqlalchemy as sa
+
+from alembic import op
 
 revision = "002_customer_accounts_and_sizes"
 down_revision = "001_initial"

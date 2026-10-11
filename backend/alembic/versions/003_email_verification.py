@@ -4,8 +4,9 @@ Revision ID: 003_email_verification
 Revises: 002_customer_accounts_and_sizes
 Create Date: 2026-09-21
 """
-from alembic import op
 import sqlalchemy as sa
+
+from alembic import op
 
 revision = "003_email_verification"
 down_revision = "002_customer_accounts_and_sizes"

@@ -1,11 +1,27 @@
 import enum
-from datetime import datetime
+from datetime import date, datetime
 from decimal import Decimal
-from sqlalchemy import Boolean, DateTime, Enum, ForeignKey, Integer, Numeric, String, Text, UniqueConstraint, func
+
+from sqlalchemy import (
+    Boolean,
+    Date,
+    DateTime,
+    Enum,
+    ForeignKey,
+    Integer,
+    Numeric,
+    String,
+    Text,
+    UniqueConstraint,
+    func,
+)
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from .db import Base
 
+
 class Role(str, enum.Enum): ADMIN = "admin"; MANAGER = "manager"
+class Gender(str, enum.Enum): WOMEN = "women"; MEN = "men"
 class OrderStatus(str, enum.Enum): NEW = "new"; PAID = "paid"; PACKED = "packed"; SHIPPED = "shipped"; DELIVERED = "delivered"; CANCELLED = "cancelled"
 
 class Timestamped:
@@ -26,6 +42,8 @@ class Customer(Timestamped, Base):
     name: Mapped[str] = mapped_column(String(160))
     phone: Mapped[str | None] = mapped_column(String(32))
     password_hash: Mapped[str | None] = mapped_column(String(255))
+    birth_date: Mapped[date | None] = mapped_column(Date)
+    avatar_url: Mapped[str | None] = mapped_column(String(500))
     orders: Mapped[list["Order"]] = relationship(back_populates="customer")
 
 class EmailVerification(Base):
@@ -47,6 +65,8 @@ class Product(Timestamped, Base):
     description: Mapped[str] = mapped_column(Text)
     material: Mapped[str] = mapped_column(String(160))
     image_url: Mapped[str | None] = mapped_column(String(500))
+    gender: Mapped[Gender] = mapped_column(Enum(Gender), default=Gender.WOMEN)
+    category: Mapped[str] = mapped_column(String(64), default="briefs")
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
     variants: Mapped[list["Variant"]] = relationship(back_populates="product", cascade="all, delete-orphan")
 
@@ -69,6 +89,9 @@ class Order(Timestamped, Base):
     status: Mapped[OrderStatus] = mapped_column(Enum(OrderStatus), default=OrderStatus.NEW)
     total: Mapped[Decimal] = mapped_column(Numeric(10, 2), default=0)
     delivery_address: Mapped[str] = mapped_column(Text)
+    payment_session_id: Mapped[str | None] = mapped_column(String(255), index=True)
+    payment_intent_id: Mapped[str | None] = mapped_column(String(255))
+    paid_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     customer: Mapped[Customer] = relationship(back_populates="orders")
     items: Mapped[list["OrderItem"]] = relationship(back_populates="order", cascade="all, delete-orphan")
 
