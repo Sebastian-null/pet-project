@@ -12,6 +12,21 @@ export const categoryNames = {
 export const categoryLabel = (locale: Locale, category: string) =>
   categoryNames[locale][category as keyof (typeof categoryNames)["uk"]] || category;
 
+// Colours are stored as codes, the same way categories are, so both languages read naturally.
+export const colorNames = {
+  uk: { black: "Чорний", sand: "Пісочний", navy: "Темно-синій", grey: "Сірий", khaki: "Хакі", blue: "Синій", white: "Білий", beige: "Бежевий", powder: "Пудровий" },
+  en: { black: "Black", sand: "Sand", navy: "Navy", grey: "Grey", khaki: "Khaki", blue: "Blue", white: "White", beige: "Beige", powder: "Powder" },
+} as const;
+
+export const colorLabel = (locale: Locale, color: string) =>
+  colorNames[locale][color as keyof (typeof colorNames)["uk"]] || color;
+
+// Swatch shown next to the colour name; an unknown colour added in the CRM falls back to sand.
+export const colorSwatch: Record<string, string> = {
+  black: "#1d1d1d", sand: "#d7b998", navy: "#2f3d57", grey: "#8b8b88", khaki: "#7c7a52",
+  blue: "#3d5475", white: "#efece4", beige: "#e3cdb4", powder: "#e8c4bf",
+};
+
 // Product copy lives in the database in Ukrainian; these are the English overrides.
 const english = {
   "everyday-cotton": { description: "Soft everyday briefs in breathable cotton with a comfortable fit.", material: "95% cotton, 5% elastane" },

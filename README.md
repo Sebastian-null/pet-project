@@ -17,6 +17,8 @@ Everything starts with one `docker compose up`.
 - Filters by section, product type, size and colour, plus search that waits for typing to settle
   (the API also takes a price range)
 - Ukrainian and English versions (`/uk`, `/en`); an unknown locale returns a real 404
+- Colours and categories live in the database as codes and get their display name from the locale
+  dictionary, so neither language leaks into the other
 - Bag kept in `localStorage`, survives a reload and is cleared after a successful payment
 
 **Customer accounts**

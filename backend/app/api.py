@@ -203,7 +203,7 @@ def checkout(payload: CheckoutIn, db: Session = Depends(get_db), signed_in: Cust
             if variant.stock < line.quantity: raise HTTPException(status_code=409, detail=f"Not enough stock: {variant.sku}")
             variant.stock -= line.quantity
             total += variant.price * line.quantity
-            order.items.append(OrderItem(variant=variant, title=f"{variant.product.name}, {variant.color} / {variant.size}", quantity=line.quantity, unit_price=variant.price))
+            order.items.append(OrderItem(variant=variant, title=f"{variant.product.name}, {variant.color.capitalize()} / {variant.size}", quantity=line.quantity, unit_price=variant.price))
         order.total = total; db.commit(); db.refresh(order)
     except HTTPException:
         db.rollback(); raise
